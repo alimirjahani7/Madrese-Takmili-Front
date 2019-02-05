@@ -1,0 +1,10 @@
+<div *ngIf="!loggedIn">
+  <app-sign-in-up></app-sign-in-up>
+</div>
+<div *ngIf="loggedIn">
+  <app-new-post></app-new-post>
+  <app-user-list></app-user-list>
+  <div *ngFor="let item of posts">
+    <app-post [postData]="item"></app-post>
+  </div>
+</div>

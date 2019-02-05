@@ -1,0 +1,25 @@
+<div style="align-content: center;text-align:center;">
+  <h2>sign up</h2>
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+    <label>User Name &nbsp; </label>
+    <input type="text" formControlName="username"/>
+    <br><br>
+    <label>Password &nbsp;</label>
+    <input type="password" formControlName="password"/>
+    <br><br>
+    <button>Register</button>
+  </form>
+</div>
+<br><br><br><br><br><br><br>
+<div style="align-content: center;text-align:center;">
+  <h2>login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <label>User Name &nbsp;</label>
+    <input type="text" formControlName="username"/>
+    <br><br>
+    <label>Password &nbsp;</label>
+    <input type="password" formControlName="password"/>
+    <br><br>
+    <button>Register</button>
+  </form>
+</div>
