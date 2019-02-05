@@ -27,6 +27,7 @@ export class NewPostComponent implements OnInit {
     const caption = this.sendPostForm.controls['caption'].value;
     const post = {
       Context: caption,
+
       UserId: this.auth.UserId,
       FileName: image,
     };
