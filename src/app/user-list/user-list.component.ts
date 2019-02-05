@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../http.service';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-user-list',
@@ -8,7 +9,7 @@ import {HttpService} from '../http.service';
 })
 export class UserListComponent implements OnInit {
 
-  constructor(private http: HttpService) {
+  constructor(private http: HttpService, private auth: AuthService) {
   }
 
   users;
@@ -16,8 +17,7 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.http.getAllUsers().subscribe(y => {
       this.users = y;
-    })
-
+      this.auth.allUserName(y);
+    });
   }
-
 }

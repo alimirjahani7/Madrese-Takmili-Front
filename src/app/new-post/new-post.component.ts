@@ -32,6 +32,7 @@ export class NewPostComponent implements OnInit {
     };
     this.http.postPost(post).subscribe(y => {
       console.log(y);
+      this.auth.updatePosts();
     });
 
   }

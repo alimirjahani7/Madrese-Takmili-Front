@@ -13,10 +13,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.postData);
-    // this.http.getAllUsers();
-
-
+    console.log(this.postData);
   }
 
 }

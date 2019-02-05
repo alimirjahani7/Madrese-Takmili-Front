@@ -15,7 +15,12 @@ export class AuthService implements OnInit {
   }
 
   UserId;
-  isLoggedIn=new Subject();
+  isLoggedIn = new Subject();
+  updatePostsSubject = new Subject();
+
+  updatePosts() {
+    this.updatePostsSubject.next({true: true});
+  }
 
   login(Username, Password) {
     this.http.login({Username, Password}).subscribe(result => {
@@ -28,6 +33,17 @@ export class AuthService implements OnInit {
         this.isLoggedIn.next({loggedIn: false});
       }
     });
+  }
+
+  getIdUserName() {
+
+  }
+
+  usernames = []
+
+  allUserName(x) {
+    this.usernames = x;
+
   }
 
   signUp(Username, Password) {
