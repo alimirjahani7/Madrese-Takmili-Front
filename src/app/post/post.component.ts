@@ -20,10 +20,12 @@ export class PostComponent implements OnInit {
   likeForm: FormGroup;
 
   comments = [];
+  liked = [];
   postUploaderUserName;
   caption;
   url;
   likeOrUnLike = 'Like';
+  numberOfLike;
   commentOfServer: any[];
 
   ngOnInit() {
@@ -43,6 +45,19 @@ export class PostComponent implements OnInit {
 
     });
     this.http.getOnePostLikes(this.postData.id).subscribe(z => {
+      console.log(z);
+      z = z.map(x => x.userId);
+      console.log(z);
+      console.log(this.auth.UserId);
+      this.numberOfLike=z.length;
+      z.forEach(p => {
+        if (p === this.auth.UserId) {
+          console.log('ok');
+          this.likeOrUnLike = 'Unlike';
+        }
+        this.liked.push(this.auth.getIdUserName(p));
+      });
+      console.log(this.liked);
       console.log(z);
     });
   }

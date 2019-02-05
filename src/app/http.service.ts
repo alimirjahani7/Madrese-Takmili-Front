@@ -53,7 +53,7 @@ export class HttpService {
   }
 
   getOnePostLikes(id) {
-    return this.http.get('https://localhost:44310/api/like' + id.toString() + '/likes', {observe: 'response'})
+    return this.http.get('https://localhost:44310/api/like/' + id.toString() + '/likes', {observe: 'response'})
       .pipe(map(data => data.body));
   }
 

@@ -1,18 +1,18 @@
 <div style="align-content: center;align-self: center;text-align: center">
 
-<h2>{{postUploaderUserName}}
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</h2>
-<img src="{{url}}">
-<h4  style="font-weight:bold; ">{{caption}}</h4>
-<div>
-  <div *ngFor="let item of comments">
-    <span style="font-weight:bold; " >{{item.user}}</span>&nbsp;&nbsp;&nbsp;
-    <span>{{item.comment}}</span>
+  <h2>{{postUploaderUserName}}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </h2>
+  <img src="{{url}}">
+  <h4 style="font-weight:bold; ">{{caption}}</h4>
+  <div>
+    <div *ngFor="let item of comments">
+      <span style="font-weight:bold; ">{{item.user}}</span>&nbsp;&nbsp;&nbsp;
+      <span>{{item.comment}}</span>
+    </div>
   </div>
-</div>
 
   <div style="align-content: center;text-align:center;">
     <form [formGroup]="commentForm" (ngSubmit)="addComment()">
@@ -21,11 +21,11 @@
       <button>send comment</button>
     </form>
     <form [formGroup]="likeForm" (ngSubmit)="hitLike()">
-      <button>like post</button>
 
+      <span *ngIf="numberOfLike>0">{{numberOfLike}} people liked your post</span>
+      <button>{{likeOrUnLike}}</button>
     </form>
   </div>
-
 
 
 </div>
