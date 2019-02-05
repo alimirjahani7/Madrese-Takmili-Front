@@ -18,7 +18,6 @@ export class AuthService implements OnInit {
   isLoggedIn=new Subject();
 
   login(Username, Password) {
-    console.log("lkogin");
     this.http.login({Username, Password}).subscribe(result => {
       result = <number> result;
       if (result >= 0) {
