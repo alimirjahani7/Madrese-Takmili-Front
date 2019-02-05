@@ -9,27 +9,37 @@ import {AuthService} from './auth.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   loggedInSubject;
+  postSubject;
   loggedIn = false;
   posts;
+  updating = true;
 
   constructor(private http: HttpService, private auth: AuthService) {
   }
 
   getPosts() {
-    this.loggedInSubject.subscribe(y => {
-      this.loggedIn = y.loggedIn;
-      this.http.getAllPosts().subscribe(result => {
-        this.posts = result;
-      })
-    });
+    this.updating = true;
+    this.loggedIn = true;
+    this.http.getAllPosts().subscribe(result => {
+      this.posts = result;
+      this.updating = false;
+    })
   }
 
   ngOnInit() {
+    this.postSubject = this.auth.updatePostsSubject;
     this.http.getAllUsers().subscribe(x => {
       this.auth.allUserName(x);
       this.loggedInSubject = this.auth.isLoggedIn;
-      this.getPosts();
+      this.loggedInSubject.subscribe(y => {
+        this.getPosts();
+      });
+      this.postSubject.subscribe(z => {
+        this.getPosts();
+      })
+
     });
+
   }
 
   ngOnDestroy() {

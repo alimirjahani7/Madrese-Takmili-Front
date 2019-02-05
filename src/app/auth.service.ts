@@ -19,6 +19,7 @@ export class AuthService implements OnInit {
   updatePostsSubject = new Subject();
 
   updatePosts() {
+    console.log(this.UserId);
     this.updatePostsSubject.next({true: true});
   }
 
@@ -30,28 +31,8 @@ export class AuthService implements OnInit {
         this.isLoggedIn.next({loggedIn: true});
       } else {
         this.UserId = -1;
-        this.isLoggedIn.next({loggedIn: false});
       }
     });
-  }
-
-  usernames;
-
-  getIdUserName(id) {
-    if (this.usernames === undefined) {
-      return id;
-    }
-    console.log(this.usernames);
-    return this.usernames.find(y => y.id == id).username;
-  }
-
-  allUserName(x) {
-    console.log(x);
-    this.usernames = x;
-  }
-
-  gettAllUserNames() {
-    return this.usernames;
   }
 
   signUp(Username, Password) {
@@ -59,11 +40,33 @@ export class AuthService implements OnInit {
       user = <number>user;
       if (user.id >= 0) {
         this.UserId = user.id;
+        this.usernames.push(user);
         this.isLoggedIn.next({loggedIn: true});
       } else {
         this.UserId = -1;
-        this.isLoggedIn.next({loggedIn: false});
       }
     });
   }
+
+  usernames;
+
+  getIdUserName(id) {
+    if(id==-1){
+      return "deleted account";
+    }
+    if (this.usernames === undefined) {
+      return id;
+    }
+    return this.usernames.find(y => y.id == id).username;
+  }
+
+  allUserName(x) {
+    this.usernames = x;
+  }
+
+  getAllUserNames() {
+    return this.usernames;
+  }
+
+
 }

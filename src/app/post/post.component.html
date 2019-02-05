@@ -1,8 +1,32 @@
 <div style="align-content: center;align-self: center;text-align: center">
 
-<h2>{{postUploaderUserName}}</h2>
+<h2>{{postUploaderUserName}}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</h2>
 <img src="{{url}}">
-<h4>{{caption}}</h4>
+<h4  style="font-weight:bold; ">{{caption}}</h4>
+<div>
+  <div *ngFor="let item of comments">
+    <span style="font-weight:bold; " >{{item.user}}</span>&nbsp;&nbsp;&nbsp;
+    <span>{{item.comment}}</span>
+  </div>
+</div>
+
+  <div style="align-content: center;text-align:center;">
+    <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+      <label>comment &nbsp; </label>
+      <input type="text" formControlName="commentText"/>
+      <button>send comment</button>
+    </form>
+    <form [formGroup]="likeForm" (ngSubmit)="hitLike()">
+      <button>like post</button>
+
+    </form>
+  </div>
+
+
 
 </div>
 <hr>

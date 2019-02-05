@@ -57,8 +57,8 @@ export class HttpService {
       .pipe(map(data => data.body));
   }
 
-  postLikes(like) {
-    return this.http.post('https://localhost:44310/api/like', like, {observe: 'response'})
+  postLike(like) {
+    return this.http.post('https://localhost:44310/api/like/', like, {observe: 'response'})
       .pipe(map(data => data.body));
   }
 
