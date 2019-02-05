@@ -31,7 +31,6 @@ export class NewPostComponent implements OnInit {
       FileName: image,
     };
     this.http.postPost(post).subscribe(y => {
-      console.log(y);
       this.auth.updatePosts();
     });
 

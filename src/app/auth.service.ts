@@ -35,15 +35,23 @@ export class AuthService implements OnInit {
     });
   }
 
-  getIdUserName() {
+  usernames;
 
+  getIdUserName(id) {
+    if (this.usernames === undefined) {
+      return id;
+    }
+    console.log(this.usernames);
+    return this.usernames.find(y => y.id == id).username;
   }
 
-  usernames = []
-
   allUserName(x) {
+    console.log(x);
     this.usernames = x;
+  }
 
+  gettAllUserNames() {
+    return this.usernames;
   }
 
   signUp(Username, Password) {

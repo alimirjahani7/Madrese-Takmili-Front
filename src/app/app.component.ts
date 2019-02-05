@@ -15,13 +15,20 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private http: HttpService, private auth: AuthService) {
   }
 
-  ngOnInit() {
-    this.loggedInSubject = this.auth.isLoggedIn;
-    this.loggedInSubject.subscribe(x => {
-      this.loggedIn = x.loggedIn;
+  getPosts() {
+    this.loggedInSubject.subscribe(y => {
+      this.loggedIn = y.loggedIn;
       this.http.getAllPosts().subscribe(result => {
         this.posts = result;
       })
+    });
+  }
+
+  ngOnInit() {
+    this.http.getAllUsers().subscribe(x => {
+      this.auth.allUserName(x);
+      this.loggedInSubject = this.auth.isLoggedIn;
+      this.getPosts();
     });
   }
 

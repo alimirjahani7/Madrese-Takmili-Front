@@ -39,7 +39,7 @@ export class HttpService {
   }
 
   getOnePostComments(id) {
-    return this.http.get('https://localhost:44310/api/post' + id.toString() + '/comments', {observe: 'response'})
+    return this.http.get('https://localhost:44310/api/post/' + id.toString() + '/comments', {observe: 'response'})
       .pipe(map(data => data.body));
   }
 
@@ -66,7 +66,7 @@ export class HttpService {
     return this.http.get('https://localhost:44310/api/comment', {observe: 'response'}).pipe(map(data => data.body));
   }
 
-  getOnePostComment(id) {
+  getOneComment(id) {
     return this.http.get('https://localhost:44310/api/comment' + id.toString(), {observe: 'response'}).pipe(map(data => data.body));
   }
 
